@@ -1,0 +1,106 @@
+Test Case 1:
+x:
+jw3350@instance-w4119:~/w4119/pa1/final$ ./UdpChat -c x 10.142.0.2 2000 5100
+$>>>[Welcome to UDPchat]
+$>>>[You are registered]
+$>>>[User y has joined the channel]
+$>>>[User z has joined the channel]
+$>>>send y hi
+$>>>send z hi
+$>>>Message from y: hi
+$>>>Message from z: hi
+$>>>dereg
+$>>>[Sending dereg signal]
+$>>>[You are deregistered]
+$>>>reg
+$>>>[You are registered]
+$>>>You have messages:
+$>>>z: <2017-3-4 14:49:19> hey welcome back
+$>>>y: <2017-3-4 14:49:36> hey welcome back
+ctrl-c
+$>>>[Sending dereg signal]
+$>>>[You are deregistered]
+$>>>[Exiting]
+
+y:
+jw3350@instance-w4119:~/w4119/pa1/final$ ./UdpChat -c y 10.142.0.2 2000 5200
+$>>>[Welcome to UDPchat]
+$>>>[You are registered]
+$>>>[User x has joined the channel]
+$>>>[User z has joined the channel]
+$>>>Message from x: hi
+$>>>send x hi
+$>>>send z hi
+$>>>Message from z: hi
+$>>>[User x has left the channel]
+$>>>send x hey welcome back
+$>>>[User x is offline, sending message to server]
+$>>>[Message recieved and stored by server]
+$>>>[User x has rejoined the channel]
+$>>>[User x has left the channel]
+ctrl-c
+$>>>[Sending dereg signal]
+$>>>[You are deregistered]
+$>>>[Exiting]
+
+z:
+jw3350@instance-w4119:~/w4119/pa1/final$ ./UdpChat -c z 10.142.0.2 2000 5300
+$>>>[Welcome to UDPchat]
+$>>>[You are registered]
+$>>>[User x has joined the channel]
+$>>>[User y has joined the channel]
+$>>>Message from x: hi
+$>>>Message from y: hi
+$>>>send x hi
+$>>>send y hi
+$>>>[User x has left the channel]
+$>>>send x hey welcome back
+$>>>[User x is offline, sending message to server]
+$>>>[Message recieved and stored by server]
+$>>>[User x has rejoined the channel]
+$>>>[User x has left the channel]
+$>>>[User y has left the channel]
+ctrl-c
+$>>>[Sending dereg signal]
+$>>>[You are deregistered]
+$>>>[Exiting]
+
+server:
+jw3350@instance-w4119:~/w4119/pa1/final$ ./UdpChat -s 2000
+$>>>[User x has joined the channel]
+$>>>[User y has joined the channel]
+$>>>[User z has joined the channel]
+$>>>[User x has left the channel]
+$>>>[User x has rejoined the channel]
+$>>>[User x has left the channel]
+$>>>[User y has left the channel]
+$>>>[User z has left the channel]
+
+Test Case 2:
+
+x:
+jw3350@instance-w4119:~/w4119/pa1/final$ ./UdpChat -c x 10.142.0.2 2000 5100
+$>>>[Welcome to UDPchat]
+$>>>[You are registered]
+$>>>[User y has joined the channel]
+$>>>[User y has left the channel]
+$>>>send y ello
+$>>>[User y is offline, sending message to server]
+$>>>[Server not responding. Exiting]
+
+y:
+jw3350@instance-w4119:~/w4119/pa1/final$ ./UdpChat -c y 10.142.0.2 2000 5200
+$>>>[Welcome to UDPchat]
+$>>>[You are registered]
+$>>>[User x has joined the channel]
+$>>>dereg
+$>>>[Sending dereg signal]
+$>>>[You are deregistered]
+ctrl-c
+$>>>[Exiting]
+
+server:
+$>>>[User x has joined the channel]
+$>>>[User y has joined the channel]
+$>>>[User y has left the channel]
+ctrl-c
